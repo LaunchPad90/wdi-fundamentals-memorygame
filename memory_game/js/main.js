@@ -1,28 +1,27 @@
 //create arrays for cards and cardsInPlay
 const cards = ['queen', 'queen', 'king', 'king'];
-const cardsInPlay = [] ;
-//create variables for each card
-const cardOne = cards[3];
-const cardTwo = cards[2];
-cardsInPlay.push(cardOne);
-cardsInPlay.push(cardTwo);
+const cardsInPlay = []
+
+//function to check how many cardsInPlay
+function flipCard(cardId) {
+  if (cardsInPlay.length < 1) {
+    //do nothing;
+  } else if (cardsInPlay.length === 1) {
+    //do nothing
+      } else {
+    return;
+  }
+  console.log('User flipped ' + cards[cardId]);
+  cardsInPlay.push(cards[cardId]);
+  checkForMatch();
 
 
-
-//if statement to check cardsInPlay
-if (cardsInPlay.length === 2) {
-  alert('Two cards');
-} if (cardsInPlay[0] === cardsInPlay[1]) {
-  alert('You found a match!');
-} else {
-  alert('Sorry, try again');
+//function to check if cardsInPlay match
+    function checkForMatch() {
+      if (cardsInPlay[0] === cardsInPlay[1]) {
+    console.log('You found a match!');
+    } else {
+    console.log('Sorry, try again');
+    }
+  }
 }
-
-
-
-
-
-
-console.log(cardsInPlay);
-console.log("User flipped " + cardOne);
-console.log("User flipped " + cardTwo);
