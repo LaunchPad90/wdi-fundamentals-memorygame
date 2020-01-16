@@ -1,4 +1,4 @@
-//create arrays for cards and cardsInPlay
+//create array for cards 
 const cards = [
   {
     rank: "queen",
@@ -18,15 +18,30 @@ const cards = [
     {
     rank: "king",
     suit: "diamonds",
-    cardImage: "imgages/king-of-diamonds.png"
+    cardImage: "images/king-of-diamonds.png"
   }
 ];
+//empty array for cardsInPlay
 const cardsInPlay = []
 
+//function to create gameboard
+function createBoard() {
+  for (let i = 0; i < cards.length; i ++) {
+    let cardElement = document.createElement('img');
+    cardElement.setAttribute('src', 'images/back.png');
+    cardElement.setAttribute('data-id', i);
+    document.getElementById('game-board').appendChild(cardElement);
+    cardElement.addEventListener('click', flipCard);
+  }
+};
+createBoard();
+
 //function to check how many cardsInPlay
-function flipCard(cardId) {
+function flipCard() {
+  let cardId = this.getAttribute('data-id');
+  this.setAttribute('src', cards[cardId].cardImage);
   if (cardsInPlay.length < 1) {
-    //do nothing;
+    //do nothing
   } else if (cardsInPlay.length === 1) {
     //do nothing
       } else {
@@ -37,14 +52,11 @@ function flipCard(cardId) {
   console.log(cards[cardId].suit);
   cardsInPlay.push(cards[cardId].rank);
   checkForMatch();
-
-
+};
 //function to check if cardsInPlay match
-    function checkForMatch() {
-      if (cardsInPlay[0] === cardsInPlay[1]) {
+function checkForMatch() {
+  if (cardsInPlay[0] === cardsInPlay[1]) {
     alert('You found a match!');
-    } else {
-    alert('Sorry, try again');
-    }
-  }
-}
+  } 
+};
+//function to reset game
